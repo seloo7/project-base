@@ -1,3 +1,7 @@
+
+if(process.env.NODE_ENV != "production") // node_env development ve product değerleri alır. hata kodunu ekranda göstermeyi engelliyor.
+  require('dotenv').config() //dotenv kütüphanesini .env dosyasına yazılan parametrelerini al ve process.env a ata. 
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -7,6 +11,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+console.log ("ENV",process.env); //çevre değişkenleri çekmiş oluruz.
 var app = express();
 
 // view engine setup
