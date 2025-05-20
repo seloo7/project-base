@@ -8,8 +8,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
 
 console.log ("ENV",process.env); //çevre değişkenleri çekmiş oluruz.
 var app = express();
@@ -29,9 +28,12 @@ app.use((req,res,next) =>{
   next();
 })
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
+ app.use('/api', require('./routes/index')); // http://localhost:3000
+ //bunun yerine dinamik yapacağız.
+ // app.use('/', require('./routes/index')); // http://localhost:3000
+  //app.use('/users', require('./routes/users')); // http://localhost:3000/users
+  //app.use('/auditlogs', require('./routes/auditlogs')); // http://localhost:3000/auditlogs
+  //app.use('/categories', require('./routes/categories')); // http://localhost:3000/categories
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
